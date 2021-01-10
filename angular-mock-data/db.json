@@ -1,0 +1,25 @@
+{
+    "expenses": [
+        {
+            "id": 1,
+            "firstName": "Lucas",
+            "lastName": "Latorre",
+            "email": "lucaslatorre@gmail.com",
+            "dateOfBirth": "2021-01-01"
+        },
+        {
+            "id": 2,
+            "firstName": "Mariana Escarlate",
+            "lastName": "Ribeiro Latorre",
+            "email": "lucaslatorre@gmail.com",
+            "dateOfBirth": "2021-01-01"
+        },
+        {
+            "id": 3,
+            "firstName": "Maria",
+            "lastName": "Lucia",
+            "email": "marialucia@gmail.com",
+            "dateOfBirth": "1984-08-13"
+        }
+    ]
+}
