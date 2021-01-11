@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 
 import { Expense } from '../expense.model';
 import { ExpensesService } from '../expenses.service';
@@ -12,18 +13,26 @@ import { ExpensesService } from '../expenses.service';
 export class ExpenseListComponent implements OnInit {
   expenses$: Observable<Expense[]>;
   expenses: Expense[] = [];
+  isActive = true;
 
   constructor(private expensesService: ExpensesService) {}
 
   ngOnInit() {
+    this.isActive = true;
     this.onRefresh();
+  }
+  public ngOnDestroy(): void {
+    this.isActive = false;
   }
 
   onRefresh() {
     this.expenses$ = this.expensesService.list().pipe();
 
-    this.expensesService.list().subscribe(result => {
-      this.expenses = result;
-    });
+    this.expensesService
+      .list()
+      .pipe(takeWhile(value => this.isActive))
+      .subscribe(result => {
+        this.expenses = result;
+      });
   }
 }
